@@ -1,0 +1,4 @@
+[{
+  "legal": "API Terms of Service: Please link back to the URL on Remote OK and mention Remote OK as a source, so we get traffic back from your site. If you do not we'll have to suspend API access.\n\nPlease don't use the Remote OK logo without written permission as they're registered trademarks, please DO use our name Remote OK though\n\nThe API feed at \/api is delayed by 24 hours so that Google knows it's Remote OK first posting the job to avoid duplicate content problems, if you'd like to advertise or pay for instant API access for all remote jobs (minimum budget $10k\/mo), contact @remoteok on Twitter.",
+  "explanation": "You can request jobs with a specific tag with ?tag= parameter, like https:\/\/remoteOK.io\/api?tag=php or multiple with ?tags= parameter, like https:\/\/remoteOK.io\/api?tags=php,js,css Good luck!"
+}]
