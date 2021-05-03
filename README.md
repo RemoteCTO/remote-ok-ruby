@@ -48,22 +48,200 @@ You can fetch a realtime version of this document by using
   RemoteOK::Client.new.legal # => String of legal copy.
 ```
 
-### Creating A Client
+### Getting Started
+
+The gem works through a client object which needs instantiation, and call methods exist on this client.
 
 ```ruby
   client = RemoteOK::Client.new
 ```
 
-### Fetching Jobs
+### Client Methods
+
+#### #jobs
+
+Items are returned as an array of `RemoteOK::Job` objects.
+
+**Important:** These items are cached in the client once fetched to avoid excessive calls to the live site, make sure to use the [#with_fetch](#with_fetch) method to force a refresh.
 
 ```ruby
   client.jobs # => [Job, Job, Job]
 ```
 
+#### #with_fetch
+
+A chainable method to force the client to fetch items from the live site rather than using the cached information.
+
+```ruby
+  client.with_fetch.jobs # => [Job, Job, Job]
+```
+
 ### Job methods
+
+Jobs are retrieved from the jobs array.
 
 ```ruby
   job = client.jobs.first
+```
+
+#### #raw
+
+Type: `JSON`
+
+Returns the raw JSON data associated with the job directly from the API.
+
+```ruby
+  job.raw # => {...}
+```
+
+#### #slug
+
+Type: `String`
+
+Returns the job url slug.
+
+```ruby
+  job.slug # => "i-am-a-job-slug"
+```
+
+#### #id
+
+Type: `Integer`
+
+Returns the job id.
+
+```ruby
+  job.id # => 123456
+```
+
+#### #epoch
+
+Type: `Integer`
+
+Returns the posting epoch as an integer.
+
+```ruby
+  job.epoch # => 1_619_724_426
+```
+
+#### #date
+
+Type: `DateTime`
+
+Returns the creation date of the job as a DateTime object.
+
+```ruby
+  job.date # => DateTime<...>
+```
+
+#### #company
+
+Type: `String`
+
+Returns the name of the company the job is for.
+
+```ruby
+  job.company # => "Awesome Company"
+```
+
+#### #company_logo
+
+Type: `String`
+
+Returns RemoteOK URL for the company logo.
+
+```ruby
+  job.company_logo # => "https://remoteOK.io/assets/jobs/something.png"
+```
+
+#### #position
+
+Type: `String`
+
+Returns name of the position (job title)
+
+```ruby
+  job.position # => "Chief Awesome Officer"
+```
+
+#### #tags
+
+Type: `Array`
+
+Returns all the tags associated for the job as symbols. These can also be used for searching and filtering the API.
+
+```ruby
+  job.tags # => [:dev, :dot_net, :digital_nomad]
+```
+
+#### #logo
+
+Type: `String`
+
+String URL of logo associated with the job.
+
+```ruby
+  job.logo # => "https://remoteOK.io/assets/jobs/jobjob.png"
+```
+
+#### #description
+
+Type: `String`
+
+A string containing the job description, directly as it's stored in Remote OK. Be aware that this will likely contain HTML code in the content.
+
+```ruby
+  job.description # => "<p><strong>Our Company</strong>...."
+```
+
+#### #description_text
+
+Type: `String`
+
+A best-attempt to extract the raw text from the above, removing HTML tags and formatting.
+
+```ruby
+  job.description_text # => "Our Company...."
+```
+
+#### #location
+
+Type: `String`
+
+Written global location for the job.
+
+```ruby
+  job.description_text # => "North America"
+```
+
+#### #original
+
+Type: `Boolean`
+
+Flag for whether it's an original job post
+
+```ruby
+  job.original # => true
+```
+
+#### #url
+
+Type: `String`
+
+String URL to the job post on RemoteOK itself
+
+```ruby
+  job.url # => "https://remoteOK.io/remote-jobs/somejob"
+```
+
+#### #apply_url
+
+Type: `String`
+
+String URL for candidates to apply to the job
+
+```ruby
+  job.apply_url # => "https://remoteOK.io/remote-jobs/l/somejob"
 ```
 
 ## Development
