@@ -56,6 +56,8 @@ The gem works through a client object which needs instantiation, and call method
   client = RemoteOK::Client.new
 ```
 
+<hr>
+
 ### Client Methods
 
 #### #jobs
@@ -76,6 +78,8 @@ A chainable method to force the client to fetch items from the live site rather 
   client.with_fetch.jobs # => [Job, Job, Job]
 ```
 
+<hr>
+
 ### Job methods
 
 Jobs are retrieved from the jobs array.
@@ -84,7 +88,7 @@ Jobs are retrieved from the jobs array.
   job = client.jobs.first
 ```
 
-#### #raw
+#### .raw
 
 Type: `JSON`
 
@@ -94,7 +98,7 @@ Returns the raw JSON data associated with the job directly from the API.
   job.raw # => {...}
 ```
 
-#### #slug
+#### .slug
 
 Type: `String`
 
@@ -104,7 +108,7 @@ Returns the job url slug.
   job.slug # => "i-am-a-job-slug"
 ```
 
-#### #id
+#### .id
 
 Type: `Integer`
 
@@ -114,7 +118,7 @@ Returns the job id.
   job.id # => 123456
 ```
 
-#### #epoch
+#### .epoch
 
 Type: `Integer`
 
@@ -124,7 +128,7 @@ Returns the posting epoch as an integer.
   job.epoch # => 1_619_724_426
 ```
 
-#### #date
+#### .date
 
 Type: `DateTime`
 
@@ -134,7 +138,7 @@ Returns the creation date of the job as a DateTime object.
   job.date # => DateTime<...>
 ```
 
-#### #company
+#### .company
 
 Type: `String`
 
@@ -144,7 +148,7 @@ Returns the name of the company the job is for.
   job.company # => "Awesome Company"
 ```
 
-#### #company_logo
+#### .company_logo
 
 Type: `String`
 
@@ -154,7 +158,7 @@ Returns RemoteOK URL for the company logo.
   job.company_logo # => "https://remoteOK.io/assets/jobs/something.png"
 ```
 
-#### #position
+#### .position
 
 Type: `String`
 
@@ -164,7 +168,7 @@ Returns name of the position (job title)
   job.position # => "Chief Awesome Officer"
 ```
 
-#### #tags
+#### .tags
 
 Type: `Array`
 
@@ -174,7 +178,7 @@ Returns all the tags associated for the job as symbols. These can also be used f
   job.tags # => [:dev, :dot_net, :digital_nomad]
 ```
 
-#### #logo
+#### .logo
 
 Type: `String`
 
@@ -184,7 +188,7 @@ String URL of logo associated with the job.
   job.logo # => "https://remoteOK.io/assets/jobs/jobjob.png"
 ```
 
-#### #description
+#### .description
 
 Type: `String`
 
@@ -194,7 +198,7 @@ A string containing the job description, directly as it's stored in Remote OK. B
   job.description # => "<p><strong>Our Company</strong>...."
 ```
 
-#### #description_text
+#### .description_text
 
 Type: `String`
 
@@ -204,7 +208,7 @@ A best-attempt to extract the raw text from the above, removing HTML tags and fo
   job.description_text # => "Our Company...."
 ```
 
-#### #location
+#### .location
 
 Type: `String`
 
@@ -214,7 +218,7 @@ Written global location for the job.
   job.description_text # => "North America"
 ```
 
-#### #original
+#### .original
 
 Type: `Boolean`
 
@@ -224,7 +228,7 @@ Flag for whether it's an original job post
   job.original # => true
 ```
 
-#### #url
+#### .url
 
 Type: `String`
 
@@ -234,7 +238,7 @@ String URL to the job post on RemoteOK itself
   job.url # => "https://remoteOK.io/remote-jobs/somejob"
 ```
 
-#### #apply_url
+#### .apply_url
 
 Type: `String`
 
@@ -244,11 +248,15 @@ String URL for candidates to apply to the job
   job.apply_url # => "https://remoteOK.io/remote-jobs/l/somejob"
 ```
 
+<hr>
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+<hr>
 
 ## Contributing
 
