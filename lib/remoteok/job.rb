@@ -48,7 +48,10 @@ module RemoteOK
     end
 
     def tags
-      raw['tags']
+      return unless raw['tags']
+      raw['tags'].map do |tag|
+        tag.gsub(' ', '_').to_sym
+      end
     end
 
     def logo

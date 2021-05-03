@@ -64,7 +64,7 @@ RSpec.describe RemoteOK::Job do
 
   describe '#tags' do
     it 'returns the array of tags' do
-      expect(job.tags).to eq ['dev', 'dot net', 'digital nomad']
+      expect(job.tags).to eq [:dev, :dot_net, :digital_nomad]
     end
   end
 
