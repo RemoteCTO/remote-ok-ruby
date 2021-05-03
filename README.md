@@ -4,9 +4,11 @@
 
 <a href="https://codeclimate.com/github/IAmFledge/remote-ok-ruby/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/test_coverage" /></a>
 
-# CURRENTLY WIP!
-
 ## Installation
+
+#### Requirements
+
+- Ruby >= 2.6.0
 
 Add this line to your application's Gemfile:
 
@@ -24,7 +26,45 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Authentication
+
+RemoteOK does not currently require direct authentication, rather simply exists as a JSON document at the url:
+
+> https://remoteok.io/api
+
+### Delayed Items & Legal
+
+Items in the API are available 24 hours later than on the web. It is important to note that this document contains it's own legal terms within it, which at the time of writing are:
+
+> API Terms of Service: Please link back to the URL on Remote OK and mention Remote OK as a source, so we get traffic back from your site. If you do not we'll have to suspend API access.
+
+> Please don't use the Remote OK logo without written permission as they're registered trademarks, please DO use our name Remote OK though
+
+> The API feed at \/api is delayed by 24 hours so that Google knows it's Remote OK first posting the job to avoid duplicate content problems, if you'd like to advertise or pay for instant API access for all remote jobs (minimum budget $10k\/mo), contact [@remoteok](https://twitter.com/remoteok) on Twitter."
+
+You can fetch a realtime version of this document by using
+
+```ruby
+  RemoteOK::Client.new.legal # => String of legal copy.
+```
+
+### Creating A Client
+
+```ruby
+  client = RemoteOK::Client.new
+```
+
+### Fetching Jobs
+
+```ruby
+  client.jobs # => [Job, Job, Job]
+```
+
+### Job methods
+
+```ruby
+  job = client.jobs.first
+```
 
 ## Development
 
@@ -34,7 +74,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/remoteok. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/remoteok/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/IAmFledge/remoteok. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/IAmFledge/remoteok/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
