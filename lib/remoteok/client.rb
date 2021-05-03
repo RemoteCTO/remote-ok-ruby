@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module RemoteOK
+  # Client class to interact with the API itself
   class Client
     require 'json'
     require 'httparty'
@@ -8,7 +11,6 @@ module RemoteOK
 
     def initialize(config = {})
       @base_url = config[:base_url] || 'https://remoteok.io/api'
-      @data
     end
 
     def with_fetch
@@ -25,7 +27,7 @@ module RemoteOK
     def jobs
       with_fetch unless @data
       jobs = []
-      @data[1..-1].each do |job_data|
+      @data[1..].each do |job_data|
         jobs << RemoteOK::Job.new(job_data)
       end
       jobs

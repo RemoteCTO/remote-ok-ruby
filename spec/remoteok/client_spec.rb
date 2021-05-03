@@ -3,7 +3,7 @@
 RSpec.describe RemoteOK::Client do
   before do
     data = File.open 'spec/fixtures/jobs_data.json'
-    httpclient = double("HTTParty", body: data.read)
+    httpclient = double('HTTParty', body: data.read)
     allow(RemoteOK::Client).to receive(:get).and_return(httpclient)
   end
 
@@ -33,12 +33,12 @@ RSpec.describe RemoteOK::Client do
     context 'when there are no jobs' do
       before do
         nj_data = File.open 'spec/fixtures/no_jobs.json'
-        httpclient = double("HTTParty", body: nj_data.read)
+        httpclient = double('HTTParty', body: nj_data.read)
         allow(RemoteOK::Client).to receive(:get).and_return(httpclient)
       end
 
       it 'returns zero jobs' do
-          expect(RemoteOK::Client.new.jobs.size).to eq 0
+        expect(RemoteOK::Client.new.jobs.size).to eq 0
       end
     end
   end

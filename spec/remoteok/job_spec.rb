@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe RemoteOK::Job do
-  let (:job_data) do
+  let(:job_data) do
     file = File.open 'spec/fixtures/jobs_data.json'
     JSON.parse(file.read).last
   end
 
-  let (:job) do
+  let(:job) do
     RemoteOK::Job.new(job_data)
   end
 
@@ -28,19 +28,19 @@ RSpec.describe RemoteOK::Job do
 
   describe '#id' do
     it 'returns the id as an integer' do
-      expect(job.id).to eq 564738
+      expect(job.id).to eq 564_738
     end
   end
 
   describe '#epoch' do
     it 'returns the epoch as an integer' do
-      expect(job.epoch).to eq 1619724426
+      expect(job.epoch).to eq 1_619_724_426
     end
   end
 
   describe '#date' do
     it 'returns the date as a date' do
-      expect(job.date).to eq DateTime.new(2021,4,29,19,27,6,'06+00:00')
+      expect(job.date).to eq DateTime.new(2021, 4, 29, 19, 27, 6, '06+00:00')
     end
   end
 

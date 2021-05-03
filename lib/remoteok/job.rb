@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module RemoteOK
+  # Class representing a single job from RemoteOK with data accessors.
   class Job
     require 'date'
 
     attr_reader :raw
 
-    HTML_CHARS_REGEX = /<("[^"]*"|'[^']*'|[^'">])*>/
+    HTML_CHARS_REGEX = /<("[^"]*"|'[^']*'|[^'">])*>/.freeze
 
     def initialize(job_data)
       @raw = job_data
@@ -16,16 +19,19 @@ module RemoteOK
 
     def id
       return unless raw['id']
+
       Integer raw['id']
     end
 
     def epoch
       return unless raw['epoch']
+
       Integer raw['epoch']
     end
 
     def date
       return unless raw['date']
+
       DateTime.parse raw['date']
     end
 
@@ -55,7 +61,8 @@ module RemoteOK
 
     def description_text
       return unless raw['description']
-      raw['description'].gsub(HTML_CHARS_REGEX, ' ').strip.gsub(/\s+/, " ")
+
+      raw['description'].gsub(HTML_CHARS_REGEX, ' ').strip.gsub(/\s+/, ' ')
     end
 
     def location
