@@ -60,7 +60,7 @@ The gem works through a client object which needs instantiation, and call method
 
 ### Client Methods
 
-#### #jobs
+#### .jobs
 
 Items are returned as an array of `RemoteOK::Job` objects.
 
@@ -70,7 +70,7 @@ Items are returned as an array of `RemoteOK::Job` objects.
   client.jobs # => [Job, Job, Job]
 ```
 
-#### #with_fetch
+#### .with_fetch
 
 A chainable method to force the client to fetch items from the live site rather than using the cached information.
 
