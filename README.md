@@ -1,5 +1,9 @@
 # RemoteOK API Ruby Client
 
+<a href="https://codeclimate.com/github/IAmFledge/remote-ok-ruby/maintainability"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/maintainability" /></a>
+
+<a href="https://codeclimate.com/github/IAmFledge/remote-ok-ruby/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/test_coverage" /></a>
+
 # CURRENTLY WIP!
 
 ## Installation
