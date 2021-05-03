@@ -215,7 +215,7 @@ Type: `String`
 Written global location for the job.
 
 ```ruby
-  job.description_text # => "North America"
+  job.location # => "North America"
 ```
 
 #### .original
