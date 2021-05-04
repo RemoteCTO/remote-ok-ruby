@@ -1,5 +1,7 @@
 # RemoteOK API Ruby Client
 
+A ruby client to interact with the <a href="https://remoteok.io" target="_blank">RemoteOK</a> API.
+
 <a href="https://codeclimate.com/github/RemoteCTO/remote-ok-ruby/maintainability"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/maintainability" /></a>
 
 <a href="https://codeclimate.com/github/RemoteCTO/remote-ok-ruby/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/test_coverage" /></a>
@@ -30,7 +32,7 @@ Or install it yourself as:
 
 RemoteOK does not currently require direct authentication, rather simply exists as a JSON document at the url:
 
-> https://remoteok.io/api
+> <a href="https://remoteok.io/api" target="_blank">https://remoteok.io/api</a>
 
 ### Delayed Items & Legal
 
@@ -40,7 +42,7 @@ Items in the API are available 24 hours later than on the web. It is important t
 
 > Please don't use the Remote OK logo without written permission as they're registered trademarks, please DO use our name Remote OK though
 
-> The API feed at \/api is delayed by 24 hours so that Google knows it's Remote OK first posting the job to avoid duplicate content problems, if you'd like to advertise or pay for instant API access for all remote jobs (minimum budget $10k\/mo), contact [@remoteok](https://twitter.com/remoteok) on Twitter."
+> The API feed at \/api is delayed by 24 hours so that Google knows it's Remote OK first posting the job to avoid duplicate content problems, if you'd like to advertise or pay for instant API access for all remote jobs (minimum budget $10k\/mo), contact <a href="https://twitter.com/remoteok" target="_blank">@remoteok</a> on Twitter."
 
 You can fetch a realtime version of this document by using
 
@@ -298,4 +300,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Remoteok project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/remoteok/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Remoteok project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/RemoteCTO/remoteok/blob/master/CODE_OF_CONDUCT.md).
