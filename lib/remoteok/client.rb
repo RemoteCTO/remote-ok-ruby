@@ -17,7 +17,7 @@ module RemoteOK
 
     def with_fetch(params = {})
       options = { 'User-Agent' => @user_agent }
-      options[:query] = params if params && params.any?
+      options[:query] = params if params&.any?
 
       response = self.class.get @base_url, options
 
@@ -31,11 +31,12 @@ module RemoteOK
     end
 
     def jobs(*tags)
-      options = { tags: stringify(tags) } if tags && tags.any?
+      options = { tags: stringify(tags) } if tags&.any?
 
       with_fetch options unless @data
 
       return unless @data.any?
+
       @data[1..].map { |job_data| RemoteOK::Job.new(job_data) }
     end
 
@@ -43,6 +44,7 @@ module RemoteOK
 
     def stringify(tags = [])
       return unless tags.any?
+
       tags.map { |tag| tag.to_s.gsub('_', ' ') }.join ','
     end
 

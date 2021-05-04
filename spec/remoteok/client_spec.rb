@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe RemoteOK::Client do
-  let (:job_data) { File.open 'spec/fixtures/jobs_data.json' }
+  let(:job_data) { File.open 'spec/fixtures/jobs_data.json' }
 
   before do
     httpclient = double('HTTParty', body: job_data.read)
@@ -14,7 +14,7 @@ RSpec.describe RemoteOK::Client do
 
   describe 'User Agent' do
     it 'sends a default user agent with each request' do
-      httpclient = double('HTTParty', body: "{}")
+      httpclient = double('HTTParty', body: '{}')
       exp_params = { 'User-Agent' => 'remote-ok-ruby/0.1.0 +http://github.com/IAmFledge/remote-ok-ruby' }
 
       expect(RemoteOK::Client).to(
@@ -28,7 +28,7 @@ RSpec.describe RemoteOK::Client do
 
     context 'when providing a custom user agent' do
       it 'sends the custom user agent instead of the default' do
-        httpclient = double('HTTParty', body: "{}")
+        httpclient = double('HTTParty', body: '{}')
         exp_params = { 'User-Agent' => 'lovely-user-agent' }
 
         expect(RemoteOK::Client).to(
@@ -74,13 +74,13 @@ RSpec.describe RemoteOK::Client do
     end
 
     context 'when providing tags' do
-      let (:data) { File.open 'spec/fixtures/jobs_data.json' }
-      let (:http_client) { double('HTTParty', body: data.read) }
+      let(:data) { File.open 'spec/fixtures/jobs_data.json' }
+      let(:http_client) { double('HTTParty', body: data.read) }
 
       it 'provides the tags as parameters to the api' do
         httpclient = double('HTTParty', body: data.read)
         exp_params = {
-          "User-Agent" => "",
+          'User-Agent' => '',
           query: { tags: 'ruby,digital nomad' }
         }
 
