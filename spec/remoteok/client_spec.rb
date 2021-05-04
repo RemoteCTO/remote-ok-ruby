@@ -41,5 +41,23 @@ RSpec.describe RemoteOK::Client do
         expect(RemoteOK::Client.new.jobs.size).to eq 0
       end
     end
+
+    context 'when providing tags' do
+      let (:data) { File.open 'spec/fixtures/jobs_data.json' }
+      let (:http_client) { double('HTTParty', body: data.read) }
+
+      it 'provides the tags as parameters to the api' do
+        httpclient = double('HTTParty', body: data.read)
+        exp_params = { query: { tags: 'ruby,digital nomad' } }
+
+        expect(RemoteOK::Client).to(
+          receive(:get)
+          .with(anything, exp_params)
+          .and_return(httpclient)
+        )
+
+        RemoteOK::Client.new.jobs :ruby, :digital_nomad
+      end
+    end
   end
 end
