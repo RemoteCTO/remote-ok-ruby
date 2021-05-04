@@ -1,14 +1,45 @@
 # frozen_string_literal: true
 
 RSpec.describe RemoteOK::Client do
+  let (:job_data) { File.open 'spec/fixtures/jobs_data.json' }
+
   before do
-    data = File.open 'spec/fixtures/jobs_data.json'
-    httpclient = double('HTTParty', body: data.read)
+    httpclient = double('HTTParty', body: job_data.read)
     allow(RemoteOK::Client).to receive(:get).and_return(httpclient)
   end
 
   it 'can instantiate' do
     expect(RemoteOK::Client.new).not_to be nil
+  end
+
+  describe 'User Agent' do
+    it 'sends a default user agent with each request' do
+      httpclient = double('HTTParty', body: "{}")
+      exp_params = { 'User-Agent' => 'remote-ok-ruby/0.1.0 +http://github.com/IAmFledge/remote-ok-ruby' }
+
+      expect(RemoteOK::Client).to(
+        receive(:get)
+        .with(anything, exp_params)
+        .and_return(httpclient)
+      )
+
+      RemoteOK::Client.new.jobs
+    end
+
+    context 'when providing a custom user agent' do
+      it 'sends the custom user agent instead of the default' do
+        httpclient = double('HTTParty', body: "{}")
+        exp_params = { 'User-Agent' => 'lovely-user-agent' }
+
+        expect(RemoteOK::Client).to(
+          receive(:get)
+          .with(anything, exp_params)
+          .and_return(httpclient)
+        )
+
+        RemoteOK::Client.new(user_agent: 'lovely-user-agent').jobs
+      end
+    end
   end
 
   describe 'legal' do
@@ -48,7 +79,10 @@ RSpec.describe RemoteOK::Client do
 
       it 'provides the tags as parameters to the api' do
         httpclient = double('HTTParty', body: data.read)
-        exp_params = { query: { tags: 'ruby,digital nomad' } }
+        exp_params = {
+          "User-Agent" => "",
+          query: { tags: 'ruby,digital nomad' }
+        }
 
         expect(RemoteOK::Client).to(
           receive(:get)
@@ -56,7 +90,7 @@ RSpec.describe RemoteOK::Client do
           .and_return(httpclient)
         )
 
-        RemoteOK::Client.new.jobs :ruby, :digital_nomad
+        RemoteOK::Client.new(user_agent: '').jobs :ruby, :digital_nomad
       end
     end
   end
