@@ -18,7 +18,7 @@ RSpec.describe RemoteOK::Client do
       exp_params = {
         headers: {
           'User-Agent' =>
-            'remote-ok-ruby/0.1.0 +http://github.com/IAmFledge/remote-ok-ruby'
+            'remote-ok-ruby/0.1.0 +http://github.com/RemoteCTO/remote-ok-ruby'
         }
       }
 

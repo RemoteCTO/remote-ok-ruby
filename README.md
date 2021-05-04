@@ -1,8 +1,8 @@
 # RemoteOK API Ruby Client
 
-<a href="https://codeclimate.com/github/IAmFledge/remote-ok-ruby/maintainability"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/maintainability" /></a>
+<a href="https://codeclimate.com/github/RemoteCTO/remote-ok-ruby/maintainability"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/maintainability" /></a>
 
-<a href="https://codeclimate.com/github/IAmFledge/remote-ok-ruby/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/test_coverage" /></a>
+<a href="https://codeclimate.com/github/RemoteCTO/remote-ok-ruby/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/test_coverage" /></a>
 
 ## Installation
 
@@ -290,7 +290,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/IAmFledge/remoteok. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/IAmFledge/remoteok/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/RemoteCTO/remoteok. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/RemoteCTO/remoteok/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 

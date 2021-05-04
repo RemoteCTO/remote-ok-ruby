@@ -50,7 +50,7 @@ module RemoteOK
     end
 
     def default_user_agent
-      "remote-ok-ruby/#{RemoteOK::VERSION} +http://github.com/IAmFledge/remote-ok-ruby"
+      "remote-ok-ruby/#{RemoteOK::VERSION} +http://github.com/RemoteCTO/remote-ok-ruby"
     end
   end
 end
