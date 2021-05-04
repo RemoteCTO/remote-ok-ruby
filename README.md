@@ -67,7 +67,7 @@ The client has a number of configurable options set during instantiation.
 The gem will send it's own default user agent but you can override it for your own app.
 
 ```ruby
-  client = RemoteOK.client.new(user_agent: 'hello-there')
+  client = RemoteOK::Client.new(user_agent: 'hello-there')
 ```
 
 ### Client Methods
