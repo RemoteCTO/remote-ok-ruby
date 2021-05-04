@@ -9,15 +9,16 @@ module RemoteOK
 
     include HTTParty
 
-    def initialize(config = {})
+    def initialize(**config)
       @base_url = config[:base_url] || 'https://remoteok.io/api'
-      @debug = config[:debug]
+      @debug = config[:debug] || false
       @user_agent = config[:user_agent] || default_user_agent
     end
 
     def with_fetch(params = {})
-      options = { 'User-Agent' => @user_agent }
+      options = { headers: { 'User-Agent' => @user_agent } }
       options[:query] = params if params&.any?
+      options[:debug_output] = $stdout if @debug
 
       response = self.class.get @base_url, options
 

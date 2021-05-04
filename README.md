@@ -60,7 +60,7 @@ The gem works through a client object which needs instantiation, and call method
 
 ### Client Config
 
-The client has a number of configurable options set during instantiation.
+The client has a number of configurable options set during instantiation. Multiple options may be provided.
 
 #### `user_agent`
 
@@ -68,6 +68,14 @@ The gem will send it's own default user agent but you can override it for your o
 
 ```ruby
   client = RemoteOK::Client.new(user_agent: 'hello-there')
+```
+
+#### `debug`
+
+Turning on the debug flag will pass a request to HTTParty to print verbose debug output to the console, so that you can inspect whats happening on the network under the hood.
+
+```ruby
+  client = RemoteOK::Client.new(debug: true)
 ```
 
 ### Client Methods

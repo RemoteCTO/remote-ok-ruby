@@ -15,7 +15,12 @@ RSpec.describe RemoteOK::Client do
   describe 'User Agent' do
     it 'sends a default user agent with each request' do
       httpclient = double('HTTParty', body: '{}')
-      exp_params = { 'User-Agent' => 'remote-ok-ruby/0.1.0 +http://github.com/IAmFledge/remote-ok-ruby' }
+      exp_params = {
+        headers: {
+          'User-Agent' =>
+            'remote-ok-ruby/0.1.0 +http://github.com/IAmFledge/remote-ok-ruby'
+        }
+      }
 
       expect(RemoteOK::Client).to(
         receive(:get)
@@ -29,7 +34,7 @@ RSpec.describe RemoteOK::Client do
     context 'when providing a custom user agent' do
       it 'sends the custom user agent instead of the default' do
         httpclient = double('HTTParty', body: '{}')
-        exp_params = { 'User-Agent' => 'lovely-user-agent' }
+        exp_params = { headers: { 'User-Agent' => 'lovely-user-agent' } }
 
         expect(RemoteOK::Client).to(
           receive(:get)
@@ -39,6 +44,24 @@ RSpec.describe RemoteOK::Client do
 
         RemoteOK::Client.new(user_agent: 'lovely-user-agent').jobs
       end
+    end
+  end
+
+  context 'Debug flag on' do
+    it 'Requests HTTP debug output into the console' do
+      httpclient = double('HTTParty', body: '{}')
+      exp_params = {
+        headers: { 'User-Agent' => '' },
+        debug_output: $stdout
+      }
+
+      expect(RemoteOK::Client).to(
+        receive(:get)
+        .with(anything, exp_params)
+        .and_return(httpclient)
+      )
+
+      RemoteOK::Client.new(user_agent: '', debug: true).jobs
     end
   end
 
@@ -80,7 +103,7 @@ RSpec.describe RemoteOK::Client do
       it 'provides the tags as parameters to the api' do
         httpclient = double('HTTParty', body: data.read)
         exp_params = {
-          'User-Agent' => '',
+          headers: { 'User-Agent' => '' },
           query: { tags: 'ruby,digital nomad' }
         }
 
