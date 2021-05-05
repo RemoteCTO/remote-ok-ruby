@@ -6,6 +6,8 @@ A ruby client to interact with the <a href="https://remoteok.io" target="_blank"
 
 <a href="https://codeclimate.com/github/RemoteCTO/remote-ok-ruby/test_coverage"><img src="https://api.codeclimate.com/v1/badges/b60f02bbaa5fd337e0cf/test_coverage" /></a>
 
+[![Gem Version](https://badge.fury.io/rb/remoteok.svg)](https://badge.fury.io/rb/remoteok)
+
 ## Installation
 
 #### Requirements
