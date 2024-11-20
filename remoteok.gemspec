@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Prod dependencies
-  spec.add_dependency 'httparty', '~> 0.18.1'
+  spec.add_dependency 'async-http'
 
   # Dev dependencies
   spec.add_development_dependency 'simplecov', '< 0.18'

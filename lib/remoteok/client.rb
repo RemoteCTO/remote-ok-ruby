@@ -4,10 +4,8 @@ module RemoteOK
   # Client class to interact with the API itself
   class Client
     require 'json'
-    require 'httparty'
+    require 'async/http/internet'
     require_relative 'job'
-
-    include HTTParty
 
     def initialize(**config)
       @base_url = config[:base_url] || 'https://remoteok.io/api'
@@ -20,7 +18,10 @@ module RemoteOK
       options[:query] = params if params&.any?
       options[:debug_output] = $stdout if @debug
 
-      response = self.class.get @base_url, options
+      response = Sync do
+        internet = Async::HTTP::Internet.new
+        internet.get @base_url, options
+      end
 
       @data = JSON.parse(response.body)
       self
