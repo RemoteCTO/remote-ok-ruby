@@ -1,20 +1,10 @@
+require:
+  - standard
+  - rubocop-rspec
+  - rubocop-performance
+
+inherit_gem:
+  standard: config/base.yml
+
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.6
-
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: single_quotes
-
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
-
-Layout/LineLength:
-  Max: 120
-
-Metrics/BlockLength:
-  Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-    - 'spec/**/*.rb'

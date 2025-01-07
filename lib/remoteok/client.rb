@@ -3,24 +3,26 @@
 module RemoteOK
   # Client class to interact with the API itself
   class Client
-    require 'json'
-    require 'httparty'
-    require_relative 'job'
-
-    include HTTParty
+    require "json"
+    require "async/http/internet/instance"
+    require_relative "job"
 
     def initialize(**config)
-      @base_url = config[:base_url] || 'https://remoteok.io/api'
+      @base_url = config[:base_url] || "https://remoteok.io/api"
       @debug = config[:debug] || false
       @user_agent = config[:user_agent] || default_user_agent
     end
 
     def with_fetch(params = {})
-      options = { headers: { 'User-Agent' => @user_agent } }
-      options[:query] = params if params&.any?
-      options[:debug_output] = $stdout if @debug
+      uri = URI(@base_url)
+      uri.query = URI.encode_www_form(params) if params&.any?
 
-      response = self.class.get @base_url, options
+      headers = {"User-Agent" => @user_agent}
+
+      response = Sync do
+        internet = Async::HTTP::Internet.new
+        internet.get(uri, headers)
+      end
 
       @data = JSON.parse(response.body)
       self
@@ -28,11 +30,11 @@ module RemoteOK
 
     def legal
       with_fetch unless @data
-      @data.first['legal']
+      @data.first["legal"]
     end
 
     def jobs(*tags)
-      options = { tags: stringify(tags) } if tags&.any?
+      options = {tags: stringify(tags)} if tags&.any?
 
       with_fetch options unless @data
 
@@ -46,7 +48,7 @@ module RemoteOK
     def stringify(tags = [])
       return unless tags.any?
 
-      tags.map { |tag| tag.to_s.gsub('_', ' ') }.join ','
+      tags.map { |tag| tag.to_s.tr("_", " ") }.join ","
     end
 
     def default_user_agent

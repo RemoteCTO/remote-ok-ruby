@@ -1,0 +1,5 @@
+fix: false               # default: false
+parallel: false          # default: false
+format: progress         # default: Standard::Formatter
+default_ignores: true    # default: true
+#ruby_version: 3.4.1      # default: RUBY_VERSION
