@@ -3,86 +3,86 @@
 module RemoteOK
   # Class representing a single job from RemoteOK with data accessors.
   class Job
-    require 'date'
+    require "date"
 
     attr_reader :raw
 
-    HTML_CHARS_REGEX = /<("[^"]*"|'[^']*'|[^'">])*>/.freeze
+    HTML_CHARS_REGEX = /<("[^"]*"|'[^']*'|[^'">])*>/
 
     def initialize(job_data)
       @raw = job_data
     end
 
     def slug
-      raw['slug']
+      raw["slug"]
     end
 
     def id
-      return unless raw['id']
+      return unless raw["id"]
 
-      Integer raw['id']
+      Integer raw["id"]
     end
 
     def epoch
-      return unless raw['epoch']
+      return unless raw["epoch"]
 
-      Integer raw['epoch']
+      Integer raw["epoch"]
     end
 
     def date
-      return unless raw['date']
+      return unless raw["date"]
 
-      DateTime.parse raw['date']
+      DateTime.parse raw["date"]
     end
 
     def company
-      raw['company']
+      raw["company"]
     end
 
     def company_logo
-      raw['company_logo']
+      raw["company_logo"]
     end
 
     def position
-      raw['position']
+      raw["position"]
     end
 
     def tags
-      return unless raw['tags']
+      return unless raw["tags"]
 
-      raw['tags'].map do |tag|
-        tag.gsub(' ', '_').to_sym
+      raw["tags"].map do |tag|
+        tag.tr(" ", "_").to_sym
       end
     end
 
     def logo
-      raw['logo']
+      raw["logo"]
     end
 
     def description
-      raw['description']
+      raw["description"]
     end
 
     def description_text
-      return unless raw['description']
+      return unless raw["description"]
 
-      raw['description'].gsub(HTML_CHARS_REGEX, ' ').strip.gsub(/\s+/, ' ')
+      raw["description"].gsub(HTML_CHARS_REGEX, " ").strip.gsub(/\s+/, " ")
     end
 
     def location
-      raw['location']
+      raw["location"]
     end
 
     def original
-      raw['original']
+      raw["original"]
     end
 
     def url
-      raw['url']
+      raw["url"]
     end
 
     def apply_url
-      raw['apply_url']
+      raw["apply_url"]
     end
   end
 end
