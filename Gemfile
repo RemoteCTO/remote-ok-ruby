@@ -15,4 +15,6 @@ group :development, :test do
   gem "rubocop-performance"
   gem "simplecov", "< 0.21"
   gem "standard", "~> 1.31"
+  gem "pry", "~> 0.15"
+  gem "binding_of_caller", "~> 1.0"
 end

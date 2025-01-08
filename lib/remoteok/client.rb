@@ -8,8 +8,7 @@ module RemoteOK
     require_relative "job"
 
     def initialize(**config)
-      @base_url = config[:base_url] || "https://remoteok.io/api"
-      @debug = config[:debug] || false
+      @base_url = config[:base_url] || "https://remoteok.com/api"
       @user_agent = config[:user_agent] || default_user_agent
     end
 
@@ -19,12 +18,12 @@ module RemoteOK
 
       headers = {"User-Agent" => @user_agent}
 
-      response = Sync do
+      @data = Sync do
         internet = Async::HTTP::Internet.new
-        internet.get(uri, headers)
+        response = internet.get(uri, headers)
+        JSON.parse(response.read)
       end
 
-      @data = JSON.parse(response.body)
       self
     end
 
